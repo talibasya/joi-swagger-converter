@@ -1,0 +1,27 @@
+{
+  "name": "joi-to-swagger-converter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "preinstall": "node main.js"
+  },
+  "dependencies": {
+    "branch-name": "^1.0.0",
+    "cookie-parser": "~1.4.4",
+    "cross-env": "^5.2.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "git": "^0.1.5",
+    "git-branch": "^2.0.1",
+    "git-branch-is": "^2.1.0",
+    "heroku-dyno-metadata": "^2.0.0",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "joi": "^14.3.1",
+    "joi-to-swagger": "^3.2.0",
+    "jsonfile": "^5.0.0",
+    "loadjson": "^1.1.2",
+    "morgan": "~1.9.1",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
