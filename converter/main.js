@@ -46,8 +46,7 @@ function main(events_list, url="https://swagger-flask-events.herokuapp.com/allev
 } 
 
 
-// events_file = require('./events');
-// main(events_file.events_list);
-tester = require('./data-input-tester');
-tester.validate_data('PRESS_START_CALL', {id:'ss'});
+events_file = require('./events');
+main(events_file.events_list);
+
 
