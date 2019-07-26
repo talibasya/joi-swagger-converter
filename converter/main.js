@@ -2,7 +2,6 @@
 // Converts joi objects in events and sends them to given URL.
 function main(events_list, url="https://swagger-flask-events.herokuapp.com/allevents", method="POST"){
     try {
-        const joi_converter = require('./converter.js');
         const server_connector = require('./server-connection.js');
         connector = new server_connector.ServerConnector(url,method);
 
@@ -16,12 +15,22 @@ function main(events_list, url="https://swagger-flask-events.herokuapp.com/allev
         }
         
         // Unpack data
-        converted = events_list['events'];
-        
+
+        var converted = events_list
         // Convert joi to swagger
-        for (let index = 0; index < converted.length; index++) {
-            converted[index]['data'] = joi_converter.convert(converted[index]['data'])          
-        };
+        var j2s = require('joi-to-swagger');
+        for (var key in converted) {
+            var joi = converted[key]['data'];  
+            if(joi)
+            {
+                var {swagger, components} = j2s(joi); 
+                converted[key]['data'] = swagger;
+            }
+            else
+            {
+                converted[key]['data'] = null;
+            }
+        }
 
         data_to_send = {
             jsonData: converted,
@@ -36,6 +45,9 @@ function main(events_list, url="https://swagger-flask-events.herokuapp.com/allev
     }
 } 
 
-const events_file = require('./events')
-main(events_list);
+
+// events_file = require('./events');
+// main(events_file.events_list);
+tester = require('./data-input-tester');
+tester.validate_data('PRESS_START_CALL', {id:'ss'});
 
