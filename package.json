@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "preinstall": "node main.js"
+    "postinstall": "node main.js"
   },
   "dependencies": {
     "branch-name": "^1.0.0",
