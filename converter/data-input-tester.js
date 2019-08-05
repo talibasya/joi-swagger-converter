@@ -1,21 +1,16 @@
+const { events } = require("./events");
+const Joi = require("joi");
 
-function validate_data(event_name, data){
-    
-    const event_file = require('./events');
-    const Joi = require('joi');
-        
-    events = event_file.events_list;
-    schema = events[event_name]['data'];
-
-    const res = Joi.validate(data,schema);
-    if(res.error)
-    {
-        throw "WRONG DATA.\n"+res.error;
-    }
-        
-    return true;
-}
+const validate = (eventName, body) => {
+  try {
+    if (!events[eventName]) throw new Error("Event is not exist");
+    const res = Joi.validate(body, events[eventName].schema);
+    if (res.error) throw new Error("Wrong data. \n" + res.error);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 module.exports = {
-    validate_data,
-}
+  validate
+};

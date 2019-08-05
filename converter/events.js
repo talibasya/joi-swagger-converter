@@ -1,10 +1,10 @@
 const Joi = require('joi');
 
-const events_list = {
+const events = {
     PRESS_START_CALL: {
         description: 'Start call description',
         categoryName: 'other',
-        data: Joi.object().keys({
+        schema: Joi.object().keys({
             id: Joi.number()
             .integer()
             .required(),
@@ -13,7 +13,7 @@ const events_list = {
     PRESS_END_CALL: {
         description: 'End call description',
         categoryName: 'other',
-        data: Joi.object().keys({
+        schema: Joi.object().keys({
             id: Joi.number()
             .integer()
             .required(),
@@ -28,7 +28,7 @@ const events_list = {
     PRESS_BUY: {
         description: 'Buy description',
         categoryName: 'buy',
-        data: Joi.object().keys({
+        schema: Joi.object().keys({
             id: Joi.number()
             .integer()
             .required(),
@@ -44,5 +44,5 @@ const events_list = {
 }
 
 module.exports = {
-    events_list
+    events
 };
